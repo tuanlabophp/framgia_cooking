@@ -1,0 +1,22 @@
+{
+  "name": "framgia_cooking",
+  "description": "",
+  "main": "",
+  "authors": [
+    "tuanlabophp <tuan.nguyenducanh@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tuanlabophp/framgia_cooking",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#^4.7.0",
+    "chart.js": "chartjs#^2.6.0"
+  }
+}
