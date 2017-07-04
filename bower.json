@@ -17,6 +17,12 @@
   ],
   "dependencies": {
     "font-awesome": "fontawesome#^4.7.0",
-    "chart.js": "chartjs#^2.6.0"
+    "chart.js": "chartjs#^2.6.0",
+    "themify-icons": "^0.1.2",
+    "Flot": "flot#^0.8.3",
+    "d3": "^4.9.1",
+    "bootstrap": "^3.3.7",
+    "swiper": "^3.4.2",
+    "moment": "^2.18.1"
   }
 }
