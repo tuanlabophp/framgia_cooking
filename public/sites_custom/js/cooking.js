@@ -32,6 +32,8 @@ var wishlish = new Vue({
             'updated_at': '',
             'parent_id': ''
         },
+        //update pricr 
+        newItem: { 'price': ''},
         pagination: {
             total: 0,
             per_page: 2,
@@ -109,6 +111,20 @@ var wishlish = new Vue({
 
         print: function () {
             window.print();
+        },
+
+        //update price 
+        updateItem: function(id){
+            var input =  this.newItem;
+            // console.log(id);
+
+            axios.post('/site/update/price/' + id, input).then((response) => {
+                if(response.data) {
+                    window.location = '/site/cooking/' + id;
+                    toastr.success(response.data.message, response.data.action, {timeOut: 10000});
+                }
+            })
+            // console.log(input);
         },
 
         //comment method

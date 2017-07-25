@@ -48,6 +48,7 @@
                                                 <ol>
                                                     <li v-for="step in cooking.steps">
                                                         @{{ step.content }}
+                                                        <img :src="'/' + step.image">
                                                     </li>
                                                 </ol>
                                             </div>
@@ -65,20 +66,42 @@
                                             @include('sites._components.rates')
 
                                             <div class="">
+                                            @if(Auth::check())
                                                 <div v-if="inCart" class="favourite" v-on:click="removeToCart(cooking.id)">
                                                     <a href="javascript:void(0);"><i class="fa fa-fw fa-shopping-cart" aria-hidden="true"></i> <span>{{ trans('sites.remove_to_cart') }}</span></a>
                                                 </div>
                                                 <div v-else="inCart" class="favourite" v-on:click="addToCart(cooking.id)">
                                                     <a href="javascript:void(0);"><i class="fa fa-fw fa-shopping-cart" aria-hidden="true"></i> <span>{{ trans('sites.add_to_cart') }}</span></a>
                                                 </div>
+                                            @else
+                                                <a href="{{ route('login') }}">
+                                                    <div  class="favourite">
+                                                        <i class="fa fa-fw fa-shopping-cart" aria-hidden="true"></i>
+                                                        <span>{{ trans('sites.add_to_cart') }}</span>
+                                                    </div>
+                                                </a>
+                                            @endif
                                             </div>
+                                            
                                             <dl class="basic">
+                                            @if(Auth::check())
+                                                <div v-if="cooking.user.id == {{ Auth::user()->id }}">
+                                                    <dt>{{ trans('sites.price') }}</dt>
+                                                    <dd>
+                                                    <form method="POST" enctype="multipart/form-data" v-on:submit.prevent="updateItem(cooking.id)">
+                                                        <input type="number" name="price" min="1" class="input" v-model="newItem.price"/>
+                                                    </form>
+                                                    </dd>
+                                                </div>
+                                            @endif
                                                 <dt>{{ trans('sites.difficulty') }}</dt>
                                                 <dd>@{{ cooking.level.name }}</dd>
                                                 <dt>{{ trans('sites.cooking_time') }}</dt>
                                                 <dd>@{{ cooking.time }} {{ trans('sites.mins') }}</dd>
-                                                 <dt>{{ trans('sites.serves') }}</dt>
+                                                <dt>{{ trans('sites.serves') }}</dt>
                                                 <dd><input v-bind:value="cooking.ration" type="number" name="seres" min="1" max="20" class="input" /></dd>
+                                                <dt>{{ trans('sites.price') }}</dt>
+                                                <dd>@{{ cooking.price }} VND</dd>
                                             </dl>
 
                                             <dl class="ingredients">

@@ -20,7 +20,7 @@
                     @foreach( $listCookings as $listCooking)
                         <div class="entry one-third wow fadeInLeft">
                             <figure>
-                                <img src="{{ $listCooking->image }}" alt="" />
+                                <img src="/{{ $listCooking->image }}" alt="" />
                                 <figcaption><a href=""><i class="ico i-view"></i> <span>{{ trans('sites.view') }}</span></a></figcaption>
                             </figure>
                             <div class="container">

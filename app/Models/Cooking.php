@@ -21,6 +21,7 @@ class Cooking extends Model
         'description',
         'ration',
         'level_id',
+        'price',
         'image',
         'video_link',
     ];
